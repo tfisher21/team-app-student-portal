@@ -3,7 +3,8 @@
     <div class="container">
       <h1 class="mb-2">{{ message }}</h1>
     </div>
-    <div class="container border">
+    <!-- Education Information -->
+    <div class="container border my-2">
       <h2 class="mt-2">Education</h2>
       <form class="form">
         <div class="form-group row">
@@ -56,21 +57,87 @@
               v-model="educationInfo.university"
             />
           </div>
-
+          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
       </form>
     </div>
-    <div class="container border">
+
+    <!-- Skills Information -->
+    <div class="container border my-2">
       <h2 class="mt-2">Skills</h2>
       <form class="form">
         <div class="form-group row">
           <label class="col-form-label col">Skills:</label>
-          <div class="col">
-            <textarea v-model="skills" v-bind:placeholder="skills"></textarea>
+          <div class="col-8">
+            <textarea
+              class="form-control"
+              v-model="skills"
+              v-bind:placeholder="skills"
+            ></textarea>
           </div>
+          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
-        <div class="col"><input class="btn btn-primary" type="submit" /></div>
       </form>
+    </div>
+
+    <!-- Capstone Information -->
+    <div class="container border my-2">
+      <h2 class="mt-2">Capstone</h2>
+      <form class="form">
+        <div class="form-group row">
+          <label class="col-form-label col">Start Date:</label>
+          <label class="col-form-label col">{{
+            educationInfo.startDate
+          }}</label>
+          <div class="col">
+            <input
+              class="form-control"
+              type="text"
+              v-model="educationInfo.startDate"
+            />
+          </div>
+          <div class="col"><input class="btn btn-primary" type="submit" /></div>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col">End Date:</label>
+          <label class="col-form-label col">{{ educationInfo.endDate }}</label>
+          <div class="col">
+            <input
+              class="form-control"
+              type="text"
+              v-model="educationInfo.endDate"
+            />
+          </div>
+          <div class="col"><input class="btn btn-primary" type="submit" /></div>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col">Degree:</label>
+          <label class="col-form-label col">{{ educationInfo.degree }}</label>
+          <div class="col">
+            <input
+              class="form-control"
+              type="text"
+              v-model="educationInfo.degree"
+            />
+          </div>
+          <div class="col"><input class="btn btn-primary" type="submit" /></div>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col">University:</label>
+          <label class="col-form-label col">{{
+            educationInfo.university
+          }}</label>
+          <div class="col">
+            <input
+              class="form-control"
+              type="text"
+              v-model="educationInfo.university"
+            />
+          </div>
+          <div class="col"><input class="btn btn-primary" type="submit" /></div>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
