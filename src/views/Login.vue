@@ -34,18 +34,19 @@ export default {
         email: this.email,
         password: this.password
       };
-      axios
-        .post("http://localhost:3000/api/sessions", params)
-        .then(response => {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
-          localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
-        })
-        .catch(error => {
-          this.errors = ["Invalid email or password."];
-          this.email = "";
-          this.password = "";
-        });
+      /* HOLD - Waiting on backend deployment to properly test POST request */
+      // axios
+      //   .post("http://localhost:3000/api/sessions", params)
+      //   .then(response => {
+      //     axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+      //     localStorage.setItem("jwt", response.data.jwt);
+      //     this.$router.push("/");
+      //   })
+      //   .catch(error => {
+      //     this.errors = ["Invalid email or password."];
+      //     this.email = "";
+      //     this.password = "";
+      //   });
     }
   }
 };
