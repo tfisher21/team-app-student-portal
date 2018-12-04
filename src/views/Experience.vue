@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <h1>Start Date</h1>
-    <input v-model="Start_Date" />
-    <h1>End Date</h1>
-    <input v-model="End_Date" />
-    <h1>Job Title</h1>
-    <input v-model="Job_Title" />
-    <h1>Company Name</h1>
-    <input v-model="Company_Name" />
-    <h1>Details</h1>
-    <input v-model="Details" />
+  <div class="copntainer">
+    <h1>Experience</h1>
+    <form>
+      <label>Start Date: <input v-model="Start_Date" /><button>Update</button> </label> <br />
+      <label>End Date: <input v-model="End_Date" /> <button>Update</button></label> <br />
+      <label>Job Title: <input v-model="Job_Title" /><button>Update</button></label> <br />
+      <label>Company Name: <input v-model="Company_Name" /> </label><button>Update</button> <br />
+      <label>Details: <input v-model="Details" /> <button>Update</button></label> <br />
+    </form>
   </div>
 </template>
 
