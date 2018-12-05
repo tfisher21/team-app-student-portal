@@ -4,9 +4,9 @@
       <h1 class="mb-2">{{ message }}</h1>
     </div>
     <!-- Education Information -->
-    <div class="container border my-2">
-      <h2 class="mt-2">Education</h2>
-      <form class="form">
+    <div class="container border py-2">
+      <h2>Education</h2>
+      <form class="form" v-on:submit.prevent="submitEdu();">
         <div class="form-group row">
           <label class="col-form-label col">Start Date:</label>
           <label class="col-form-label col">{{
@@ -19,7 +19,6 @@
               v-model="educationInfo.startDate"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col">End Date:</label>
@@ -31,7 +30,6 @@
               v-model="educationInfo.endDate"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col">Degree:</label>
@@ -43,7 +41,6 @@
               v-model="educationInfo.degree"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col">University:</label>
@@ -57,15 +54,15 @@
               v-model="educationInfo.university"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
       </form>
     </div>
 
     <!-- Skills Information -->
-    <div class="container border my-2">
-      <h2 class="mt-2">Skills</h2>
-      <form class="form">
+    <div class="container border py-2">
+      <h2>Skills</h2>
+      <form class="form" v-on:submit.prevent="submitSkills();">
         <div class="form-group row">
           <label class="col-form-label col">Skills:</label>
           <div class="col-8">
@@ -75,15 +72,15 @@
               v-bind:placeholder="skills"
             ></textarea>
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
       </form>
     </div>
 
     <!-- Capstone Information -->
-    <div class="container border my-2">
-      <h2 class="mt-2">Capstone</h2>
-      <form class="form">
+    <div class="container border py-2">
+      <h2>Capstone</h2>
+      <form class="form" v-on:submit.prevent="submitCapstone();">
         <div class="form-group row">
           <label class="col-form-label col">Start Date:</label>
           <label class="col-form-label col">{{
@@ -96,7 +93,6 @@
               v-model="educationInfo.startDate"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col">End Date:</label>
@@ -108,7 +104,6 @@
               v-model="educationInfo.endDate"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col">Degree:</label>
@@ -120,7 +115,6 @@
               v-model="educationInfo.degree"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col">University:</label>
@@ -134,8 +128,8 @@
               v-model="educationInfo.university"
             />
           </div>
-          <div class="col"><input class="btn btn-primary" type="submit" /></div>
         </div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
       </form>
     </div>
   </div>
