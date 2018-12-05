@@ -7,7 +7,12 @@
         <div class="form-group row">
           <div class="form-group col-6">
             <label>First name</label>
-            <input class="form-control" v-model="editFirstName" type="text" />
+            <input
+              class="form-control"
+              v-model="editFirstName"
+              type="text"
+              placeholder="First Name"
+            />
           </div>
           <div class="form-group col-6">
             <label>Last name</label>
@@ -73,6 +78,8 @@
 <style></style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function() {
     return {
@@ -91,7 +98,25 @@ export default {
       editPhoto: ""
     };
   },
-  created: function() {},
+  created: function() {
+    // Will need to update for current user when auth is implemented
+    axios
+      .get("https://gentle-sierra-69054.herokuapp.com/api/students/1")
+      .then(response => {
+        const student = response.data;
+        this.editFirstName = student.first_name;
+        this.editLastName = student.last_name;
+        this.editEmail = student.email;
+        this.editPhoneNumber = student.phone_number;
+        this.editShortBio = student.short_bio;
+        this.editLinkedinURL = student.linkedin_url;
+        this.editTwitterHandle = student.twitter_handle;
+        this.editWebsiteUrl = student.website_url;
+        this.editOnlineResumeUrl = student.online_resume_url;
+        this.editGithubUrl = student.github_url;
+        this.editPhoto = student.photo;
+      });
+  },
   methods: {},
   computed: {}
 };
