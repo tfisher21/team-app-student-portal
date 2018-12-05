@@ -28,6 +28,22 @@
           <h2>
             Education <button class="btn btn-sm btn-success">Edit</button>
           </h2>
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div
+                    v-for="school in education"
+                    class="card-body border my-1"
+                  >
+                    <p v-for="(value, key) in school" class="card-text">
+                      <strong>{{ key }}</strong> {{ value }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-6">
           <h2>Skills <button class="btn btn-sm btn-success">Edit</button></h2>
@@ -62,7 +78,8 @@ export default {
         onlineResumeUrl: "",
         githubUrl: "",
         photo: ""
-      }
+      },
+      education: []
     };
   },
   created: function() {
@@ -83,6 +100,16 @@ export default {
         this.user.onlineResumeUrl = student.online_resume_url;
         this.user.githubUrl = student.github_url;
         this.user.photo = student.photo;
+
+        student.education.forEach(school => {
+          this.education.push({
+            startDate: school.start_date,
+            endDate: school.end_date,
+            degree: school.degree,
+            university: school.university_name,
+            details: school.details
+          });
+        });
       });
   },
   methods: {},
