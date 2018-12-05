@@ -1,22 +1,72 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <h1 class="mb-2">Student Info</h1>
 
-    <h2>Student Info</h2>
-    <form action="/action_page.php">
-      First name: <input v-model="editFirstName" type="text" /><br />
-      Last name: <input v-model="editLastName" type="text" /><br />
-      Email: <input v-model="editEmail" type="text" /><br />
-      Phone Number: <input v-model="editPhoneNumber" type="text" /><br />
-      Short Bio: <input v-model="editShortBio" type="text" /><br />
-      Linkedin URL: <input v-model="editLinkedinUrl" type="text" /><br />
-      Twitter Handle: <input v-model="editTwitterHandle" type="text" /><br />
-      Website URL: <input v-model="editWebsiteUrl" type="text" /><br />
-      Online Resume URL: <input v-model="editOnlineResumeUrl" type="text" /><br />
-      Github URL: <input v-model="editGithubUrl" type="text" /><br />
-      Photo: <input v-model="editPhoto" type="text" /><br />
-      <button v-on:click="editStudent();" class="btn btn-primary">Submit</button>
-    </form>
+    <div class="container border py-2">
+      <form v-on:submit.prevent="editStudent();">
+        <div class="form-group row">
+          <div class="form-group col-6">
+            <label>First name</label>
+            <input class="form-control" v-model="editFirstName" type="text" />
+          </div>
+          <div class="form-group col-6">
+            <label>Last name</label>
+            <input class="form-control" v-model="editLastName" type="text" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="form-group col-6">
+            <label>Email</label>
+            <input class="form-control" v-model="editEmail" type="text" />
+          </div>
+          <div class="form-group col-6">
+            <label>Phone Number</label>
+            <input class="form-control" v-model="editPhoneNumber" type="text" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="form-group col">
+            <label>Short Bio</label>
+            <input class="form-control" v-model="editShortBio" type="text" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="form-group col-4">
+            <label>Linkedin URL</label>
+            <input class="form-control" v-model="editLinkedinUrl" type="text" />
+          </div>
+          <div class="form-group col-4">
+            <label>Twitter</label>
+            <input
+              class="form-control"
+              v-model="editTwitterHandle"
+              type="text"
+            />
+          </div>
+          <div class="form-group col-4">
+            <label>Online Resume URL</label>
+            <input
+              class="form-control"
+              v-model="editOnlineResumeUrl"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="form-group col-4">
+            <label>GitHub</label>
+            <input class="form-control" v-model="editGithubUrl" type="text" />
+          </div>
+          <div class="form-group col-4">
+            <label>Photo URL</label>
+            <input class="form-control" v-model="editPhoto" type="text" />
+          </div>
+        </div>
+        <button v-on:click="editStudent();" class="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
