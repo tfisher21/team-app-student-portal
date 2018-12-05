@@ -3,10 +3,7 @@
     <div class="container border">
       <div class="row">
         <div class="col-6">
-          <h2>
-            Student Info
-            <a class="btn btn-sm btn-success" href="#/studentinfo/edit">Edit</a>
-          </h2>
+          <h2>Student Info <a class="btn btn-sm btn-success" href="#/studentinfo/edit">Edit</a></h2>
           <div class="card mb-2">
             <div class="card-body">
               <div class="row">
@@ -22,12 +19,21 @@
         <div class="col-6">
           <h2>
             Experience <button class="btn btn-sm btn-success">Edit</button>
+            <div class="card mb-2">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <p v-for="(value, key) in user" class="card-text">
+                      <strong>{{ key }}</strong> {{ value }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </h2>
         </div>
         <div class="col-6">
-          <h2>
-            Education <button class="btn btn-sm btn-success">Edit</button>
-          </h2>
+          <h2>Education <button class="btn btn-sm btn-success">Edit</button></h2>
         </div>
         <div class="col-6">
           <h2>Skills <button class="btn btn-sm btn-success">Edit</button></h2>
@@ -62,28 +68,38 @@ export default {
         onlineResumeUrl: "",
         githubUrl: "",
         photo: ""
-      }
+      },
+      experience: []
     };
   },
   created: function() {
     // Will need to update for current user when auth is implemented
-    axios
-      .get("https://gentle-sierra-69054.herokuapp.com/api/students/1")
-      .then(response => {
-        console.log(response.data.linkedin_url);
-        const student = response.data;
-        this.user.firstName = student.first_name;
-        this.user.lastName = student.last_name;
-        this.user.email = student.email;
-        this.user.phoneNumber = student.phone_number;
-        this.user.shortBio = student.short_bio;
-        this.user.linkedinUrl = student.linkedin_url;
-        this.user.twitterHandle = student.twitter_handle;
-        this.user.websiteUrl = student.website_url;
-        this.user.onlineResumeUrl = student.online_resume_url;
-        this.user.githubUrl = student.github_url;
-        this.user.photo = student.photo;
+    axios.get("https://gentle-sierra-69054.herokuapp.com/api/students/1").then(response => {
+      console.log(response.data.linkedin_url);
+      const student = response.data;
+      this.user.firstName = student.first_name;
+      this.user.lastName = student.last_name;
+      this.user.email = student.email;
+      this.user.phoneNumber = student.phone_number;
+      this.user.shortBio = student.short_bio;
+      this.user.linkedinUrl = student.linkedin_url;
+      this.user.twitterHandle = student.twitter_handle;
+      this.user.websiteUrl = student.website_url;
+      this.user.onlineResumeUrl = student.online_resume_url;
+      this.user.githubUrl = student.github_url;
+      this.user.photo = student.photo;
+
+      student.experience.forEach(function(value) {
+        var job = {
+          startDate: value.start_date,
+          endDate: value.end_date,
+          jobTitle: value.job_title,
+          companyName: value.company_name,
+          details: value.details
+        };
+        this.experience.push(job);
       });
+    });
   },
   methods: {},
   computed: {}
