@@ -14,11 +14,6 @@
                   <p v-for="(value, key) in user" class="card-text">
                     <strong>{{ key }}</strong> {{ value }}
                   </p>
-                  <!--
-                    <p class="card-text">
-                      <strong>Last Name</strong> {{ user.lastName }}
-                    </p>
-                  -->
                 </div>
               </div>
             </div>
@@ -28,6 +23,17 @@
           <h2>
             Experience <button class="btn btn-sm btn-success">Edit</button>
           </h2>
+        </div>
+        <div class="col-6">
+          <h2>
+            Education <button class="btn btn-sm btn-success">Edit</button>
+          </h2>
+        </div>
+        <div class="col-6">
+          <h2>Skills <button class="btn btn-sm btn-success">Edit</button></h2>
+        </div>
+        <div class="col-6">
+          <h2>Capstone <button class="btn btn-sm btn-success">Edit</button></h2>
         </div>
       </div>
     </div>
