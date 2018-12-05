@@ -1,76 +1,35 @@
 <template>
-  <div class="home">
-    <h1 class="mb-2">Student Info</h1>
-
-    <div class="container border py-2">
-      <form v-on:submit.prevent="editStudent();">
-        <div class="form-group row">
-          <div class="form-group col-6">
-            <label>First name</label>
-            <input
-              class="form-control"
-              v-model="editFirstName"
-              type="text"
-              placeholder="First Name"
-            />
-          </div>
-          <div class="form-group col-6">
-            <label>Last name</label>
-            <input class="form-control" v-model="editLastName" type="text" />
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="form-group col-6">
-            <label>Email</label>
-            <input class="form-control" v-model="editEmail" type="text" />
-          </div>
-          <div class="form-group col-6">
-            <label>Phone Number</label>
-            <input class="form-control" v-model="editPhoneNumber" type="text" />
+  <div class="studentinfo">
+    <div class="container border">
+      <div class="row">
+        <div class="col-6">
+          <h2>
+            Student Info
+            <a class="btn btn-sm btn-success" href="#/studentinfo/edit">Edit</a>
+          </h2>
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <p v-for="(value, key) in user" class="card-text">
+                    <strong>{{ key }}</strong> {{ value }}
+                  </p>
+                  <!--
+                    <p class="card-text">
+                      <strong>Last Name</strong> {{ user.lastName }}
+                    </p>
+                  -->
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group row">
-          <div class="form-group col">
-            <label>Short Bio</label>
-            <input class="form-control" v-model="editShortBio" type="text" />
-          </div>
+        <div class="col-6">
+          <h2>
+            Experience <button class="btn btn-sm btn-success">Edit</button>
+          </h2>
         </div>
-        <div class="form-group row">
-          <div class="form-group col-4">
-            <label>Linkedin URL</label>
-            <input class="form-control" v-model="editLinkedinUrl" type="text" />
-          </div>
-          <div class="form-group col-4">
-            <label>Twitter</label>
-            <input
-              class="form-control"
-              v-model="editTwitterHandle"
-              type="text"
-            />
-          </div>
-          <div class="form-group col-4">
-            <label>Online Resume URL</label>
-            <input
-              class="form-control"
-              v-model="editOnlineResumeUrl"
-              type="text"
-            />
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="form-group col-4">
-            <label>GitHub</label>
-            <input class="form-control" v-model="editGithubUrl" type="text" />
-          </div>
-          <div class="form-group col-4">
-            <label>Photo URL</label>
-            <input class="form-control" v-model="editPhoto" type="text" />
-          </div>
-        </div>
-        <button v-on:click="editStudent();" class="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -85,17 +44,19 @@ export default {
     return {
       message: "Welcome to Vue.js!",
       Students: [],
-      editFirstName: "",
-      editLastName: "",
-      editEmail: "",
-      editPhoneNumber: "",
-      editShortBio: "",
-      editLinkedinUrl: "",
-      editTwitterHandle: "",
-      editWebsiteUrl: "",
-      editOnlineResumeUrl: "",
-      editGithubUrl: "",
-      editPhoto: ""
+      user: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        shortBio: "",
+        linkedinUrl: "",
+        twitterHandle: "",
+        websiteUrl: "",
+        onlineResumeUrl: "",
+        githubUrl: "",
+        photo: ""
+      }
     };
   },
   created: function() {
@@ -103,18 +64,19 @@ export default {
     axios
       .get("https://gentle-sierra-69054.herokuapp.com/api/students/1")
       .then(response => {
+        console.log(response.data.linkedin_url);
         const student = response.data;
-        this.editFirstName = student.first_name;
-        this.editLastName = student.last_name;
-        this.editEmail = student.email;
-        this.editPhoneNumber = student.phone_number;
-        this.editShortBio = student.short_bio;
-        this.editLinkedinURL = student.linkedin_url;
-        this.editTwitterHandle = student.twitter_handle;
-        this.editWebsiteUrl = student.website_url;
-        this.editOnlineResumeUrl = student.online_resume_url;
-        this.editGithubUrl = student.github_url;
-        this.editPhoto = student.photo;
+        this.user.firstName = student.first_name;
+        this.user.lastName = student.last_name;
+        this.user.email = student.email;
+        this.user.phoneNumber = student.phone_number;
+        this.user.shortBio = student.short_bio;
+        this.user.linkedinUrl = student.linkedin_url;
+        this.user.twitterHandle = student.twitter_handle;
+        this.user.websiteUrl = student.website_url;
+        this.user.onlineResumeUrl = student.online_resume_url;
+        this.user.githubUrl = student.github_url;
+        this.user.photo = student.photo;
       });
   },
   methods: {},
