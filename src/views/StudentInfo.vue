@@ -1,47 +1,90 @@
 <template>
-  <div class="home">
-    <h1>{{ message }}</h1>
-
-    <h2>Student Info</h2>
-    <form action="/action_page.php">
-      First name: <input v-model="editFirstName" type="text" /><br />
-      Last name: <input v-model="editLastName" type="text" /><br />
-      Email: <input v-model="editEmail" type="text" /><br />
-      Phone Number: <input v-model="editPhoneNumber" type="text" /><br />
-      Short Bio: <input v-model="editShortBio" type="text" /><br />
-      Linkedin URL: <input v-model="editLinkedinUrl" type="text" /><br />
-      Twitter Handle: <input v-model="editTwitterHandle" type="text" /><br />
-      Website URL: <input v-model="editWebsiteUrl" type="text" /><br />
-      Online Resume URL: <input v-model="editOnlineResumeUrl" type="text" /><br />
-      Github URL: <input v-model="editGithubUrl" type="text" /><br />
-      Photo: <input v-model="editPhoto" type="text" /><br />
-      <button v-on:click="editStudent();" class="btn btn-primary">Submit</button>
-    </form>
+  <div class="studentinfo">
+    <div class="container border">
+      <div class="row">
+        <div class="col-6">
+          <h2>
+            Student Info
+            <a class="btn btn-sm btn-success" href="#/studentinfo/edit">Edit</a>
+          </h2>
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <p v-for="(value, key) in user" class="card-text">
+                    <strong>{{ key }}</strong> {{ value }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h2>
+            Experience <button class="btn btn-sm btn-success">Edit</button>
+          </h2>
+        </div>
+        <div class="col-6">
+          <h2>
+            Education <button class="btn btn-sm btn-success">Edit</button>
+          </h2>
+        </div>
+        <div class="col-6">
+          <h2>Skills <button class="btn btn-sm btn-success">Edit</button></h2>
+        </div>
+        <div class="col-6">
+          <h2>Capstone <button class="btn btn-sm btn-success">Edit</button></h2>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style></style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
       Students: [],
-      editFirstName: "",
-      editLastName: "",
-      editEmail: "",
-      editPhoneNumber: "",
-      editShortBio: "",
-      editLinkedinUrl: "",
-      editTwitterHandle: "",
-      editWebsiteUrl: "",
-      editOnlineResumeUrl: "",
-      editGithubUrl: "",
-      editPhoto: ""
+      user: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        shortBio: "",
+        linkedinUrl: "",
+        twitterHandle: "",
+        websiteUrl: "",
+        onlineResumeUrl: "",
+        githubUrl: "",
+        photo: ""
+      }
     };
   },
-  created: function() {},
+  created: function() {
+    // Will need to update for current user when auth is implemented
+    axios
+      .get("https://gentle-sierra-69054.herokuapp.com/api/students/1")
+      .then(response => {
+        console.log(response.data.linkedin_url);
+        const student = response.data;
+        this.user.firstName = student.first_name;
+        this.user.lastName = student.last_name;
+        this.user.email = student.email;
+        this.user.phoneNumber = student.phone_number;
+        this.user.shortBio = student.short_bio;
+        this.user.linkedinUrl = student.linkedin_url;
+        this.user.twitterHandle = student.twitter_handle;
+        this.user.websiteUrl = student.website_url;
+        this.user.onlineResumeUrl = student.online_resume_url;
+        this.user.githubUrl = student.github_url;
+        this.user.photo = student.photo;
+      });
+  },
   methods: {},
   computed: {}
 };

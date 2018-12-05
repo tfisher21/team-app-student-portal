@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Experience from "./views/Experience.vue";
 import StudentInfo from "./views/StudentInfo.vue";
 import EduSkillsCapstoneDisplay from "./views/EduSkillsCapstoneDisplay.vue";
+import EditStudentInfo from "./views/EditStudentInfo.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -22,6 +23,11 @@ export default new Router({
       path: "/studentinfo",
       name: "studentinfo",
       component: StudentInfo
+    },
+    {
+      path: "/studentinfo/edit",
+      name: "editstudentinfo",
+      component: EditStudentInfo
     },
     {
       path: "/eduskillscapstonedisplay",
